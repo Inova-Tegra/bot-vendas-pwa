@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.dfab4932.chunk.css",
-    "main.js": "/static/js/main.54f99188.chunk.js",
-    "main.js.map": "/static/js/main.54f99188.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.20cc4de0.js",
-    "runtime-main.js.map": "/static/js/runtime-main.20cc4de0.js.map",
-    "static/js/2.cb5d398d.chunk.js": "/static/js/2.cb5d398d.chunk.js",
-    "static/js/2.cb5d398d.chunk.js.map": "/static/js/2.cb5d398d.chunk.js.map",
-    "static/js/3.0f3b8530.chunk.js": "/static/js/3.0f3b8530.chunk.js",
-    "static/js/3.0f3b8530.chunk.js.map": "/static/js/3.0f3b8530.chunk.js.map",
-    "index.html": "/index.html",
-    "service-worker.js": "/service-worker.js",
-    "service-worker.js.map": "/service-worker.js.map",
-    "static/css/main.dfab4932.chunk.css.map": "/static/css/main.dfab4932.chunk.css.map",
-    "static/js/2.cb5d398d.chunk.js.LICENSE.txt": "/static/js/2.cb5d398d.chunk.js.LICENSE.txt"
+    "main.css": "/bot-boutique-pwa-react/static/css/main.dfab4932.chunk.css",
+    "main.js": "/bot-boutique-pwa-react/static/js/main.60fb2d3e.chunk.js",
+    "main.js.map": "/bot-boutique-pwa-react/static/js/main.60fb2d3e.chunk.js.map",
+    "runtime-main.js": "/bot-boutique-pwa-react/static/js/runtime-main.53fce19b.js",
+    "runtime-main.js.map": "/bot-boutique-pwa-react/static/js/runtime-main.53fce19b.js.map",
+    "static/js/2.cb5d398d.chunk.js": "/bot-boutique-pwa-react/static/js/2.cb5d398d.chunk.js",
+    "static/js/2.cb5d398d.chunk.js.map": "/bot-boutique-pwa-react/static/js/2.cb5d398d.chunk.js.map",
+    "static/js/3.0f3b8530.chunk.js": "/bot-boutique-pwa-react/static/js/3.0f3b8530.chunk.js",
+    "static/js/3.0f3b8530.chunk.js.map": "/bot-boutique-pwa-react/static/js/3.0f3b8530.chunk.js.map",
+    "index.html": "/bot-boutique-pwa-react/index.html",
+    "service-worker.js": "/bot-boutique-pwa-react/service-worker.js",
+    "service-worker.js.map": "/bot-boutique-pwa-react/service-worker.js.map",
+    "static/css/main.dfab4932.chunk.css.map": "/bot-boutique-pwa-react/static/css/main.dfab4932.chunk.css.map",
+    "static/js/2.cb5d398d.chunk.js.LICENSE.txt": "/bot-boutique-pwa-react/static/js/2.cb5d398d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.20cc4de0.js",
+    "static/js/runtime-main.53fce19b.js",
     "static/js/2.cb5d398d.chunk.js",
     "static/css/main.dfab4932.chunk.css",
-    "static/js/main.54f99188.chunk.js"
+    "static/js/main.60fb2d3e.chunk.js"
   ]
 }

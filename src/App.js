@@ -14,6 +14,7 @@ function App() {
     });
     console.log('useEffect ran')
   })
+  
 
   const handleInstallClick = () => {
     deferredPrompt.prompt();
