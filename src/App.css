@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.install-banner {
+  background-color: #FCBF2A;
+  padding: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

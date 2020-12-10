@@ -1,23 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect} from "react";
+import "./App.css";
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log(deferredPrompt)
+    });
+    console.log('useEffect ran')
+  })
+
+  const handleInstallClick = () => {
+    deferredPrompt.prompt();
+  }
+
   return (
     <div className="App">
+      <div className="install-banner" onClick={ () => handleInstallClick() }>
+        Clique aqui para adicionar o Bot Boutique à tela principal de seu smarthpone.
+      </div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <h1>Bot Boutique</h1>
+          <p>Um chatbot da Tegra.</p>
+        </div>
       </header>
     </div>
   );
