@@ -1,4 +1,5 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import InstallButton from "./InstallButton";
 import "./App.css";
 
 function App() {
@@ -6,25 +7,24 @@ function App() {
   const [isInstalled, setIsInstalled] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
-  useEffect(() => {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      console.log(deferredPrompt)
-    });
-    console.log('useEffect ran')
-  })
-  
-
   const handleInstallClick = () => {
-    deferredPrompt.prompt();
-  }
+    console.log("clicked!");
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      console.log("listened beforeinstallprompt");
+    });
+  });
 
   return (
     <div className="App">
-      <div className="install-banner" onClick={ () => handleInstallClick() }>
-        Clique aqui para adicionar o Bot Boutique à tela principal de seu smarthpone.
-      </div>
+      <InstallButton />
       <header className="App-header">
         <div>
           <h1>Bot Boutique</h1>
