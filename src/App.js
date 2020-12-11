@@ -1,9 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import InstallButton from "./InstallButton";
 import "./App.css";
 
 function App() {
 
+  const configWatsonChat = async () => {
+    const chatBtn = await findWatsonChatBtn();
+    initiateWatsonResponseFormatter();
+    autoOpenChat(chatBtn);
+  }
+
+  const findWatsonChatBtn = async () => {
+    const chatBtn = document.querySelector('#WACLauncher__Button');
+    if (chatBtn) {
+      return chatBtn
+    } else {
+      await new Promise(r => setTimeout(r, 250));
+      return findWatsonChatBtn();
+    }
+  }
+  
   // FORMATAR RESPOSTAS VINDAS DO WATSON DISCOVERY, PARA QUE TENHAM QUEBRA DE LINHA E SEJAMENTENDIDAS COMO CÓDIGO HTML E NÃO APENAS COMO UMA STRING
   const initiateWatsonResponseFormatter = () => {
     const targetNode = document.querySelector('#WACContainer');
@@ -27,15 +43,14 @@ function App() {
   }
 
   // if app has already been installed, automatically open chat, for better user ux (needs less click to start conversation)
-  const autoOpenChat = () =>{
+  const autoOpenChat = (chatBtn) =>{
     if (window.matchMedia('(display-mode: standalone)').matches) {
-      document.querySelector('#WACLauncher__Button').click();
+      chatBtn.click();
     }
   }
 
   useEffect(() => {
-    initiateWatsonResponseFormatter();
-    autoOpenChat();
+    configWatsonChat();
   });
 
   return (
@@ -44,7 +59,7 @@ function App() {
       <header className="App-header">
         <div>
           <h1>Bot Boutique</h1>
-          <p>Um chatbot da Tegra.</p>
+          <p>O chatbot do Home Boutique.</p>
         </div>
       </header>
     </div>

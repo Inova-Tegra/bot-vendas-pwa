@@ -5,15 +5,15 @@ const InstallButton = () => {
   const [supportsPWA, setSupportsPWA] = useState(false);
   const [promptInstall, setPromptInstall] = useState(null);
 
-  const pwaHandler = e => {
-    e.preventDefault();
-    setSupportsPWA(true);
-    setPromptInstall(e);
-  };
-
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", pwaHandler);
-    return () => window.removeEventListener("transitionend", pwaHandler);
+    const handler = e => {
+      e.preventDefault();
+      setSupportsPWA(true);
+      setPromptInstall(e);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+
+    return () => window.removeEventListener("transitionend", handler);
   }, []);
 
   const onClick = evt => {
@@ -21,12 +21,11 @@ const InstallButton = () => {
     if (!promptInstall) {
       return;
     }
-
     promptInstall.prompt();
   };
-
-  if (!supportsPWA) return null;
-
+  if (!supportsPWA) {
+    return null;
+  }
   return (
     <button
       className="install-btn"
