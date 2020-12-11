@@ -7,7 +7,7 @@ function App() {
   const configWatsonChat = async () => {
     const chatBtn = await findWatsonChatBtn();
     initiateWatsonResponseFormatter();
-    setTimeout(autoOpenChat(chatBtn), 1000);
+    setTimeout(autoOpenChat(chatBtn), 500);
   }
 
   const findWatsonChatBtn = async () => {
