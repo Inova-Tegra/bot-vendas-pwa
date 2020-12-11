@@ -13,7 +13,7 @@ function App() {
   const findWatsonChatBtn = async () => {
     const chatBtn = document.querySelector('#WACLauncher__Button');
     if (chatBtn) {
-      return chatBtn
+      return chatBtn;
     } else {
       await new Promise(r => setTimeout(r, 250));
       return findWatsonChatBtn();
@@ -52,16 +52,16 @@ function App() {
   useEffect(() => {
     configWatsonChat();
   });
-
+  
   return (
     <div className="App">
       <InstallButton />
-      <header className="App-header">
+      <div className="App-content">
         <div>
           <h1>Bot Boutique</h1>
           <p>O chatbot do Home Boutique.</p>
         </div>
-      </header>
+      </div>
     </div>
   );
 }
