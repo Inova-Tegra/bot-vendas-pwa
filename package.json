@@ -27,8 +27,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "pregh-pages-build-and-deploy": "yarn run build",
+    "gh-pages-build-and-deploy": "gh-pages -d build",
+    "gh-pages-deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
