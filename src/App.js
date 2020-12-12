@@ -33,6 +33,16 @@ function App() {
       if (watsonRes) {
         watsonRes.innerHTML = watsonRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
         .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+
+        // edit pdf urls so they can be seen on mobile without needing to download them
+        const pdfViewerUrl = 'https://docs.google.com/viewer?url='
+        const resLinks = watsonRes.querySelectorAll('a');
+        
+        resLinks.forEach(link => {
+          if(link.href.includes('.pdf') && !link.href.includes(pdfViewerUrl)) {
+            link.href = pdfViewerUrl + link.href
+          };
+        })
       }
     }
     
