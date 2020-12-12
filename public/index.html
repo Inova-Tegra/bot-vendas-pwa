@@ -136,7 +136,9 @@
           const buttons = buttonsParent.children;
 
           buttons[0].textContent = 'Aceitar e continuar';
-          buttons[0].style.width = '100%'
+          buttons[0].style.width = '100%';
+          buttons[0].style.padding = '1rem';
+          buttons[0].style.borderRadius = '5px';
           buttons[1].textContent = 'Recusar';
           buttonsParent.removeChild(buttons[1]); // show only acceptance button
 
@@ -168,7 +170,7 @@
           integrationID: "0c008834-392b-4c93-a88b-9b3ae9d0dba9", // The ID of this integration.
           region: "us-south", // The region your integration is hosted in.
           serviceInstanceID: "02b387d3-ae7a-4c42-bfab-505ea447779b", // The ID of your service instance.
-          disclaimer: {isOn: true, disclaimer: 'Política', disclaimerHTML: `A Tegra utiliza cookies e outras tecnologias semelhantes para melhorar sua experiência <br> de acordo com nossa<a target="_blank" href="https://www.tegraincorporadora.com.br/politicaprivacidade/" style="color:#FCBF2A"> Política de Privacidade</a>. Ao continuar navegando, você aceita estas condições.<br>Acesse nossa <a target="_blank" href="https://www.tegraincorporadora.com.br/politicaprivacidade/" style="color:#FCBF2A"> Política de Privacidade</a> e saiba como tratamos dados pessoais.`},
+          disclaimer: {isOn: true, disclaimer: 'Política', disclaimerHTML: `A Tegra utiliza cookies e outras tecnologias semelhantes para melhorar sua experiência <br> de acordo com nossa<a target="_blank" href="https://www.tegraincorporadora.com.br/politicaprivacidade/" style="color:#FCBF2A"> Política de Privacidade</a>. Ao continuar navegando, você aceita estas condições.`},
           onLoad: async function(instance) { 
             instance.on({ type: 'customResponse', handler: customResponseHandler });
             instance.render();
