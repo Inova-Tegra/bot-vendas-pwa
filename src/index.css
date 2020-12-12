@@ -19,6 +19,14 @@ code {
   border-style: none;
 }
 
+#WACContainer.WACContainer .WAC__homeScreen-starter button.WAC__button--ghost{
+  color: #282C34!important;
+  margin-bottom: .5rem;
+  border: #e0e0e0 solid 1px!important;
+  border-bottom: none!important;
+  margin: 0;
+}
+
 #WACContainer.WACContainer .WAC__received--text {
   background-color: var(--WatsonAssistantChat-CARD-background);
   border-radius: var(--WatsonAssistantChat-BASE-border-radius-small);
