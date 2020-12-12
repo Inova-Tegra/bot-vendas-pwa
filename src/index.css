@@ -35,10 +35,11 @@ code {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem!important;
+  margin-top: -0.5rem;
 }
 
-#WACContainer.WACContainer .feedback-question {
+#WACContainer.WACContainer .feedback-message {
   color: #70706D!important;
 }
 
