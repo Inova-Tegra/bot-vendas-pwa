@@ -25,20 +25,24 @@ function App() {
   const initiateWatsonResponseFormatter = () => {
     const targetNode = document.querySelector('#WACContainer');
     const config = { attributes: true, childList: true, subtree: true };
-
+    
+    const formatResponseElement = (mutation, cssQuery) => {
+      let watsonResColl = mutation.target.querySelectorAll(cssQuery);
+      let watsonRes = watsonResColl[watsonResColl.length-1]
+      
+      if (watsonRes) {
+        watsonRes.innerHTML = watsonRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
+        .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      }
+    }
+    
     const formatResponse = function(mutationsList, observer) {
         // Use traditional 'for loops' for IE 11
         for(const mutation of mutationsList) {
-            if (mutation.target.id === 'WAC__messages') {
-              let watsonRes = mutation.target.querySelector('.WAC__searchResult--padding');
-              const watsonLongRes = mutation.target.querySelector('.WAC__searchResponseBody');
-              if (watsonLongRes) watsonRes = watsonLongRes;
-
-              if (watsonRes) {
-                watsonRes.innerHTML = watsonRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
-                                                         .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-              }
-            }
+          if (mutation.target.id === 'WAC__messages') {
+            formatResponseElement(mutation, '.WAC__searchResult--padding')
+            formatResponseElement(mutation, '.WAC__searchResponseBody')
+          }
         }
     };
 
