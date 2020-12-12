@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Chatbot da tegra Incorporadora com informações sobre o empreendimento Home Boutique" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -23,11 +24,116 @@
     -->
     <title>Bot Boutique</title>
     <script>
+      function sendFeedback(feedback, previousMsgs) {
+        const plataformaDigitalUrl = `https://tegraincorporadora.sydle.one/api/1/integracoes-externas/br.com.tegraincorporadora.inovacao/feedbackDoBotTegraConecta/_create`;
+        const credentials = btoa("integração.externa.publica_feedbacks.bot.tegra.conecta:i4p!D*1RC7Yhn"); // converts to base 64
+
+        const headers = { Authorization: `Basic ${credentials}`, "X-Explorer-Account-Token": 'tegraincorporadora' };
+        const data = { feedback: feedback, ultimasMensagens: previousMsgs }
+  
+        axios.post(plataformaDigitalUrl, data, { headers: headers }).catch(err => console.log(err));
+      }
+
+      function getMsgDiv(elm) {
+        const parent = elm.parentElement;
+        if (parent.id.match(/WAC__message-\d+/)) {
+          return parent;
+        } else {
+          return getMsgDiv(parent);
+        }
+      }
+
+      function getPreviousMsgs(elm) {
+        const baseId = 'WAC__message-';
+        const msgDiv = getMsgDiv(elm);
+        const msgId = msgDiv.id.replace(baseId, '');
+        const previousMsgs = []
+
+        const msgIdNum = parseInt(msgId);
+        let previousMsgId = msgIdNum - 7;
+        if (previousMsgId < 0) previousMsgId = 0;
+
+        while (previousMsgId < msgId) {
+          const msg = document.querySelector(`#${baseId}${previousMsgId}`).textContent;
+          const formattedMsg = msg.replace('You said', 'You said: ').replace('Bot Boutique said', 'Bot Boutique said: ')
+          previousMsgs.push(formattedMsg);
+          previousMsgId++;
+        }
+
+        return previousMsgs;
+      }
+
+
+      function handleFeedback(e) {
+        const btn = e.target
+        console.log(e.target)
+        const parentSpan = btn.parentElement
+        if (parentSpan.dataset.feedback) return; // não pode adicionar feedback mais de uma vez
+
+        btn.classList.remove('clickable');
+        const feedback = btn.dataset.feedback;
+        parentSpan.dataset.feedback = feedback;
+        
+        const fillColor = feedback === 'positivo' ? ' #70ab13' : '#d74127';
+        btn.querySelector('svg').setAttribute('fill', fillColor);
+        btn.classList.add(`${feedback}-border`);
+
+        previousMsgs = getPreviousMsgs(btn);
+        sendFeedback(feedback, previousMsgs);
+      };
+
+      function handleFeedbackTemplate(event) {
+        const parent = document.createElement('span');
+        parent.classList.add('feedback-container');
+        
+        const question = document.createElement('span');
+        question.innerHTML = 'Essa resposta foi útil?';
+        question.classList.add('feedback-question')
+        
+        const negBtn = document.createElement('button');
+        negBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#70706D" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+        negBtn.classList.add('feedback-button')
+        negBtn.classList.add('clickable');
+        negBtn.dataset.feedback = 'negativo';
+        negBtn.addEventListener('click', handleFeedback, {capture: true});
+
+        const posBtn = document.createElement('button');
+        posBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#70706D" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+        posBtn.classList.add('feedback-button')
+        posBtn.classList.add('clickable');
+        posBtn.dataset.feedback = 'positivo';
+        posBtn.addEventListener('click', handleFeedback, {capture: true})
+
+        
+        parent.appendChild(question);
+        parent.appendChild(negBtn);
+        parent.appendChild(posBtn);
+
+        event.data.element.appendChild(parent);
+      }
+
+  
+      function customResponseHandler(event) {
+        const { message } = event.data;
+        // Add a switch so you can watch for different custom responses.
+        // By convention, have a "template_name" property inside your user_defined object.
+        switch (message.user_defined.template_name) {
+          case 'get_feedback':
+            handleFeedbackTemplate(event);
+            break;
+          default:
+            console.error('Unhandled response type.');
+        }
+      }
+
       window.watsonAssistantChatOptions = {
           integrationID: "0c008834-392b-4c93-a88b-9b3ae9d0dba9", // The ID of this integration.
           region: "us-south", // The region your integration is hosted in.
           serviceInstanceID: "02b387d3-ae7a-4c42-bfab-505ea447779b", // The ID of your service instance.
-          onLoad: function(instance) { instance.render(); }
+          onLoad: function(instance) { 
+            instance.on({ type: 'customResponse', handler: customResponseHandler });
+            instance.render(); 
+          }
         };
       setTimeout(function(){
         const t=document.createElement('script');

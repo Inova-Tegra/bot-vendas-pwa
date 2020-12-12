@@ -11,3 +11,63 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.install-btn {
+  background-color: #FCBF2A;
+  padding: 0.75rem 0.2rem;
+  min-width: 100%;
+  border-style: none;
+}
+
+#WACContainer.WACContainer .WAC__received--text {
+  background-color: var(--WatsonAssistantChat-CARD-background);
+  border-radius: var(--WatsonAssistantChat-BASE-border-radius-small);
+  box-shadow: var(--WatsonAssistantChat-CARD-box-shadow);
+  border: var(--WatsonAssistantChat-BASE-border-width-med) solid transparent;
+  color: var(--WatsonAssistantChat-CARBON-text-01);
+  display: block;
+  padding: 1rem;
+  font-size: var(--WatsonAssistantChat-BASE-font-size-med);
+  margin-bottom: var(--WatsonAssistantChat-BASE-spacing-03);
+}
+
+#WACContainer.WACContainer .feedback-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+#WACContainer.WACContainer .feedback-question {
+  color: #70706D!important;
+}
+
+#WACContainer.WACContainer .feedback-button {
+  max-height: 1.5rem;
+  /* max-width: 1.5rem; */
+  padding: .75rem!important;
+  background-color:transparent!important;
+  border: #e0e0e0 solid 1px!important;
+  border-radius: 5px!important;
+  margin-left: 0.5rem;
+}
+
+#WACContainer.WACContainer .feedback-button svg{
+  height: 1.25rem;
+}
+
+#WACContainer.WACContainer .negativo-border {
+  border: #f28274 solid 1px!important;
+}
+
+#WACContainer.WACContainer .positivo-border {
+  border: #8dd21e solid 1px!important;
+}
+
+button > * {
+  pointer-events: none;
+}
+
+#WACContainer.WACContainer .clickable {
+  cursor: pointer;
+}

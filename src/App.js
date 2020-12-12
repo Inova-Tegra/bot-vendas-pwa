@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import InstallButton from "./InstallButton";
+import FeedbackIcons from "./FeedbackIcons";
 import "./App.css";
 
 function App() {
@@ -29,10 +30,12 @@ function App() {
         // Use traditional 'for loops' for IE 11
         for(const mutation of mutationsList) {
             if (mutation.target.id === 'WAC__messages') {
-              const watsonDiscoveryRes = mutation.target.querySelector('.WAC__searchResponseBody');
+              let watsonRes = mutation.target.querySelector('.WAC__searchResult--padding');
+              const watsonLongRes = mutation.target.querySelector('.WAC__searchResponseBody');
+              if (watsonLongRes) watsonRes = watsonLongRes;
 
-              if (watsonDiscoveryRes) {
-                watsonDiscoveryRes.innerHTML = watsonDiscoveryRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
+              if (watsonRes) {
+                watsonRes.innerHTML = watsonRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
               }
             }
         }
@@ -59,7 +62,7 @@ function App() {
       <div className="App-content">
         <div>
           <h1>Bot Boutique</h1>
-          <p>O chatbot do Home Boutique.</p>
+          <p>O chatbot da Tegra sobre o Home Boutique.</p>
         </div>
       </div>
     </div>
