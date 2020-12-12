@@ -132,9 +132,14 @@
 
         if (disclaimerTitle) {
           disclaimerTitle.textContent = 'Proteção de Dados'
-          const buttons = document.querySelector('.WAC__disclaimer-buttons').children;
+          const buttonsParent = document.querySelector('.WAC__disclaimer-buttons');
+          const buttons = buttonsParent.children;
+
           buttons[0].textContent = 'Aceitar e continuar';
+          buttons[0].style.width = '100%'
           buttons[1].textContent = 'Recusar';
+          buttonsParent.removeChild(buttons[1]); // show only acceptance button
+
         } else if (!watsonChatMsgs) {
           await new Promise(r => setTimeout(r, 50));
           updateBotDisclaimerTexts();
