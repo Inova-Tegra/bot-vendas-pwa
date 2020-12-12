@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/bot-boutique-pwa-react/static/css/main.39b08be9.chunk.css",
-    "main.js": "/bot-boutique-pwa-react/static/js/main.66f25900.chunk.js",
-    "main.js.map": "/bot-boutique-pwa-react/static/js/main.66f25900.chunk.js.map",
+    "main.css": "/bot-boutique-pwa-react/static/css/main.5f87fec6.chunk.css",
+    "main.js": "/bot-boutique-pwa-react/static/js/main.7b954462.chunk.js",
+    "main.js.map": "/bot-boutique-pwa-react/static/js/main.7b954462.chunk.js.map",
     "runtime-main.js": "/bot-boutique-pwa-react/static/js/runtime-main.9274501e.js",
     "runtime-main.js.map": "/bot-boutique-pwa-react/static/js/runtime-main.9274501e.js.map",
-    "static/js/2.80c9bae4.chunk.js": "/bot-boutique-pwa-react/static/js/2.80c9bae4.chunk.js",
-    "static/js/2.80c9bae4.chunk.js.map": "/bot-boutique-pwa-react/static/js/2.80c9bae4.chunk.js.map",
+    "static/js/2.41b67b70.chunk.js": "/bot-boutique-pwa-react/static/js/2.41b67b70.chunk.js",
+    "static/js/2.41b67b70.chunk.js.map": "/bot-boutique-pwa-react/static/js/2.41b67b70.chunk.js.map",
     "static/js/3.3d06fc80.chunk.js": "/bot-boutique-pwa-react/static/js/3.3d06fc80.chunk.js",
     "static/js/3.3d06fc80.chunk.js.map": "/bot-boutique-pwa-react/static/js/3.3d06fc80.chunk.js.map",
     "index.html": "/bot-boutique-pwa-react/index.html",
     "service-worker.js": "/bot-boutique-pwa-react/service-worker.js",
     "service-worker.js.map": "/bot-boutique-pwa-react/service-worker.js.map",
-    "static/css/main.39b08be9.chunk.css.map": "/bot-boutique-pwa-react/static/css/main.39b08be9.chunk.css.map",
-    "static/js/2.80c9bae4.chunk.js.LICENSE.txt": "/bot-boutique-pwa-react/static/js/2.80c9bae4.chunk.js.LICENSE.txt"
+    "static/css/main.5f87fec6.chunk.css.map": "/bot-boutique-pwa-react/static/css/main.5f87fec6.chunk.css.map",
+    "static/js/2.41b67b70.chunk.js.LICENSE.txt": "/bot-boutique-pwa-react/static/js/2.41b67b70.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9274501e.js",
-    "static/js/2.80c9bae4.chunk.js",
-    "static/css/main.39b08be9.chunk.css",
-    "static/js/main.66f25900.chunk.js"
+    "static/js/2.41b67b70.chunk.js",
+    "static/css/main.5f87fec6.chunk.css",
+    "static/js/main.7b954462.chunk.js"
   ]
 }

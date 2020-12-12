@@ -62,7 +62,7 @@ function App() {
       <div className="App-content">
         <div>
           <h1>Bot Boutique</h1>
-          <p>O chatbot da Tegra sobre o Home Boutique.</p>
+          <p>O bot do Home Boutique.</p>
         </div>
       </div>
     </div>
