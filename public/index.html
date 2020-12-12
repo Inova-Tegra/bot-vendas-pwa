@@ -126,13 +126,48 @@
         }
       }
 
+      async function updateBotDisclaimerTexts() {
+        const disclaimerTitle = document.querySelector('.WAC__disclaimer-title');
+        const watsonChatMsgs = document.querySelector('.WAC__messages');
+
+        if (disclaimerTitle) {
+          disclaimerTitle.textContent = 'Proteção de Dados'
+          const buttons = document.querySelector('.WAC__disclaimer-buttons').children;
+          buttons[0].textContent = 'Aceitar e continuar';
+          buttons[1].textContent = 'Recusar';
+        } else if (!watsonChatMsgs) {
+          await new Promise(r => setTimeout(r, 50));
+          updateBotDisclaimerTexts();
+        }
+      }
+
+      async function updateBotHomeTexts() {
+        const watsonHomeScreen = document.querySelector('.WAC__homeScreen-content');
+        const watsonChatMsgs = document.querySelector('.WAC__messages');
+
+        if (watsonHomeScreen) {
+          document.querySelector('#WAC__inputContainer-TextArea--homeScreen').placeholder = 'Me pergunte algo...'
+          document.querySelector('.ibm-web-chat-card-home-screen__title-outer').textContent = 'Sugestões:'
+        } else if (!watsonChatMsgs) {
+          await new Promise(r => setTimeout(r, 50));
+          updateBotHomeTexts();
+        }
+      }
+
+      function updateBotTexts() {
+        updateBotDisclaimerTexts();
+        updateBotHomeTexts()
+      }
+
       window.watsonAssistantChatOptions = {
           integrationID: "0c008834-392b-4c93-a88b-9b3ae9d0dba9", // The ID of this integration.
           region: "us-south", // The region your integration is hosted in.
           serviceInstanceID: "02b387d3-ae7a-4c42-bfab-505ea447779b", // The ID of your service instance.
-          onLoad: function(instance) { 
+          disclaimer: {isOn: true, disclaimer: 'Política', disclaimerHTML: `A Tegra utiliza cookies e outras tecnologias semelhantes para melhorar sua experiência <br> de acordo com nossa<a target="_blank" href="https://www.tegraincorporadora.com.br/politicaprivacidade/" style="color:#FCBF2A"> Política de Privacidade</a>. Ao continuar navegando, você aceita estas condições.<br>Acesse nossa <a target="_blank" href="https://www.tegraincorporadora.com.br/politicaprivacidade/" style="color:#FCBF2A"> Política de Privacidade</a> e saiba como tratamos dados pessoais.`},
+          onLoad: async function(instance) { 
             instance.on({ type: 'customResponse', handler: customResponseHandler });
-            instance.render(); 
+            instance.render();
+            updateBotTexts(); 
           }
         };
       setTimeout(function(){
