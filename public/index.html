@@ -24,7 +24,7 @@
     -->
     <title>Bot Boutique</title>
     <script>
-      function sendFeedback(feedback, previousMsgs) {
+      async function sendFeedback(feedback, previousMsgs) {
         const plataformaDigitalUrl = `https://tegraincorporadora.sydle.one/api/1/integracoes-externas/br.com.tegraincorporadora.inovacao/feedbackDoBotTegraConecta/_create`;
         const credentials = btoa("integração.externa.publica_feedbacks.bot.tegra.conecta:i4p!D*1RC7Yhn"); // converts to base 64
 
@@ -64,16 +64,11 @@
       }
 
 
-      function handleFeedback(e) {
+      async function handleFeedback(e) {
         const btn = e.target
 
         const parentSpan = btn.parentElement
         if (parentSpan.dataset.feedback) return; // não pode adicionar feedback mais de uma vez
-
-        const feedbackMsg = document.createElement('span');
-        feedbackMsg.innerHTML = 'Feedback enviado!';
-        feedbackMsg.classList.add('feedback-message')
-        parentSpan.prepend(feedbackMsg)
 
         btn.classList.remove('clickable');
         const feedback = btn.dataset.feedback;
@@ -85,6 +80,11 @@
 
         previousMsgs = getPreviousMsgs(btn);
         sendFeedback(feedback, previousMsgs);
+
+        const feedbackMsg = document.createElement('span');
+        feedbackMsg.innerHTML = 'Feedback enviado!';
+        feedbackMsg.classList.add('feedback-message')
+        parentSpan.prepend(feedbackMsg)
       };
 
       function handleFeedbackTemplate(event) {

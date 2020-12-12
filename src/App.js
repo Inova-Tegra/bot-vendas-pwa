@@ -36,6 +36,7 @@ function App() {
 
               if (watsonRes) {
                 watsonRes.innerHTML = watsonRes.innerHTML.split('\n').map(content=> `<p>${content}</p>`).join(' ')
+                                                         .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
               }
             }
         }
