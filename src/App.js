@@ -73,8 +73,8 @@ function App() {
       <InstallButton />
       <div className="App-content">
         <div>
-          <h1>Bot Boutique</h1>
-          <p>O bot do Home Boutique.</p>
+          <h1>Bot Tegra Conecta</h1>
+          <p>Tire suas dúvidas sobre o Home Boutique.</p>
         </div>
       </div>
     </div>
