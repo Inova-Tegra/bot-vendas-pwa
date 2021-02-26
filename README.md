@@ -3,6 +3,11 @@ O Bot Vendas é uma aplicação que permite interações com dois tipos de inter
 
 O projeto é escrito em React e é basicamente uma aplicação front-end que carrega o plugin do Watson Assistant e o exibe na tela. Além disso, ele tem as configurações necessárias apra ser um PWA, ou seja, para que possa ser instalado em browser modernos.
 
+- [Testando na sua máquina](#testando-na-sua-máquina)
+- [Configurando o Watson Assistant](#configurando-o-watson-assistant)
+  - [customResponse](#customresponse)
+  - [updateBotTexts()](#updatebottexts)
+
 <br/>
 
 ## Testando na sua máquina
