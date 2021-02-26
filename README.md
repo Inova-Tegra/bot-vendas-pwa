@@ -1,7 +1,10 @@
 # Bot Vendas PWA
 O Bot Vendas é uma aplicação que permite interações com dois tipos de interfaces: uma é via whatsapp e a outra é via um Progressive Web App. Esse repósitório, escrito em React, contém o código dessa segunda interface.
 
-O projeto é escrito em React e é basicamente uma aplicação front-end que carrega o plugin do Watson Assistant e o exibe na tela. Além disso, ele tem as configurações necessárias apra ser um PWA, ou seja, para que possa ser instalado em browser modernos.
+O projeto é escrito em React e é basicamente uma aplicação front-end que carrega o plugin do Watson Assistant e o exibe na tela. Além disso, ele tem as configurações necessárias para ser um PWA, ou seja, para que possa ser instalado em browsers modernos.
+
+> [Essa página da documentação do Watson Assistant] é extremamente curta e tem um vídeo de 3min mostrando como o plugin do Watson Assistant é adicionado a sites
+
 
 - [Testando na sua máquina](#testando-na-sua-máquina)
 - [Configurando o Watson Assistant](#configurando-o-watson-assistant)
@@ -46,7 +49,7 @@ setTimeout(function(){
 ```
 <br/>
 
-No código acima, vemos que o `watsonAssistantChatOptions` define uma callback function `onLoad` que será rodada toda vez que uma nova mensagem do Watson Assistant for enviada para nossa aplicação. Essa função define três ações: 
+No código acima, vemos que o `watsonAssistantChatOptions` define uma callback function `onLoad`, a qual será rodada toda vez que uma nova mensagem do Watson Assistant for enviada para nossa aplicação. Essa função define três ações: 
 ```js
 onLoad: async function(instance) { 
   // ao receber respostas do Watson Assistant do tipo customResponse, rodar código customResponseHandler
