@@ -74,7 +74,7 @@ function App() {
       <div className="App-content">
         <div>
           <h1>Bot Tegra Conecta</h1>
-          <p>Tire suas dúvidas sobre o Home Boutique.</p>
+          <p>Tire suas dúvidas sobre o Home Boutique by Tegra.</p>
         </div>
       </div>
     </div>
