@@ -3,9 +3,6 @@ O Bot Vendas é uma aplicação que permite interações com dois tipos de inter
 
 O projeto é escrito em React e é basicamente uma aplicação front-end que carrega o plugin do Watson Assistant e o exibe na tela. Além disso, ele tem as configurações necessárias para ser um PWA, ou seja, para que possa ser instalado em browsers modernos.
 
-> [Essa página da documentação do Watson Assistant] é extremamente curta e tem um vídeo de 3min mostrando como o plugin do Watson Assistant é adicionado a sites
-
-
 - [Testando na sua máquina](#testando-na-sua-máquina)
 - [Configurando o Watson Assistant](#configurando-o-watson-assistant)
   - [customResponse](#customresponse)
@@ -25,6 +22,8 @@ yarn start # starts the server
 <br/>
 
 ## Configurando o Watson Assistant
+> [Essa página da documentação do Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-deploy-web-chat) tem um vídeo de 3min mostrando como o plugin do Watson Assistant é adicionado a sites
+
 No arquivo `public/index.html`, adicionamos uma tag `<script>` que vai carregar o plugin do Watson e configurá-lo:
 ```js
 // primeiro configuramos as opções do watson como um atributo de window
@@ -75,7 +74,7 @@ response_type: 'text'          // resposta padrão do Watson Assistant
 response_type: 'search'        // resposta vinda da busca na base de dados do Watson Discovery
 response_type: 'user_defined'  // resposta definida pelo usuário com um valor customizado (nesse caso, usado apenas pelo bot PWA)
 ```
-Mensagens do tipo `user_defined` são entendidas pela aplicação como sendo do tipo `customResponse` e disparam a função `customResponseHandler()`. No caso, usamos esse handler para enviar uma mensagem vazia com o template `get_feedback` e customizamos a mensagem vaiza para exibir os botões de feedback. Esses botões enviam feedback dos usuários para a Plataforma Digital.
+Mensagens do tipo `user_defined` são entendidas pela aplicação como sendo do tipo `customResponse` e disparam a função `customResponseHandler()`. No caso, usamos esse handler para enviar uma mensagem vazia com o template `get_feedback` e customizamos a mensagem vazia para exibir os botões de feedback. Esses botões enviam feedback dos usuários para a Plataforma Digital (Pacote: Inovação, Classe: Feedback Bot Vendas).
 
 Temos umas série de funções no arquivo `public/index.html` que são responsáveis por essa customização:
 ```js
