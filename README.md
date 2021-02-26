@@ -24,6 +24,8 @@ yarn start # starts the server
 ## Configurando o Watson Assistant
 > [Essa página da documentação do Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-deploy-web-chat) tem um vídeo de 3min mostrando como o plugin do Watson Assistant é adicionado a sites
 
+<br/>
+
 No arquivo `public/index.html`, adicionamos uma tag `<script>` que vai carregar o plugin do Watson e configurá-lo:
 ```js
 // primeiro configuramos as opções do watson como um atributo de window
